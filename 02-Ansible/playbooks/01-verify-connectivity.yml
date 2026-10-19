@@ -1,0 +1,14 @@
+---
+- name: Verify Ansible control node
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: Display control node hostname
+      ansible.builtin.debug:
+        msg: "Ansible control node is ready: {{ ansible_hostname }}"
+
+    - name: Verify Python availability
+      ansible.builtin.command: python3 --version
+      changed_when: false
